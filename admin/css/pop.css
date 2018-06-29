@@ -1,0 +1,81 @@
+#erroMsss
+{
+	background-color: rgb(157, 11, 33);
+	color:white;
+	padding: 8px 50px;
+	width: 20%px;
+}
+#mySucess
+{
+	color: white;
+	padding: 5px;
+	width: 100%;
+	padding: 8px 50px;
+	font-size: 13px;
+	background-color: #3a6c09;
+}
+#form_div
+{
+	padding: 20px;
+    background-color: #e7e7e7;
+}
+#form_div select
+{
+	border-radius: 0px;
+}
+#form_div input[type="text"], input[type="number"]
+{
+    border-radius: 0px;
+}
+#form_div textarea
+{
+    border-radius:0px;
+}
+
+#submit
+{
+	color: white;
+	background-color: #092840;
+	padding: 6px 45px;
+	font-size: 14px;
+	border:solid 1px white;
+	border-radius: 0px;
+	transition: 0.5s;
+}
+
+#submit:hover
+{
+	background-color: transparent;
+	color: black;
+	border:solid 1px black;
+}
+
+#cancel
+{
+	color: #7f0a0a;
+	background-color: transparent;
+	font-size: 14px;
+	border:solid 1px #7f0a0a;
+	border-radius: 0px;
+	transition: 0.5s;
+}
+
+#cancel:hover
+{
+	color: white;
+	background-color: #7f0a0a;
+	font-size: 14px;
+	border:solid 1px #7f0a0a;
+	border-radius: 0px;
+}
+
+#count
+{
+	float: right;
+	font-size: 15px;
+	color: #7f0a0a;
+	margin-top: -58px;
+	border:solid 2px #7f0a0a;
+	padding: 3px 30px;
+	border-radius: 10px;
+}

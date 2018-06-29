@@ -1,0 +1,10 @@
+/*@media (min-width: 789px) 
+{
+  .menu-toggle {
+    display: none;
+  }
+  @media(max-width: 789px){
+    .header_social{
+      display: none;
+    }
+  }
