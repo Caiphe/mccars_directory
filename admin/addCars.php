@@ -560,9 +560,7 @@ include('header.php');
   function errormessage(){
     $("#erroMsss").hide(1000);
   }
-</script>
 
-<script type="text/javascript">
   setTimeout('successMethod()',4000);
   function successMethod(){
     $("#mySucess").hide(1000);

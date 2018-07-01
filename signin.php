@@ -8,21 +8,18 @@
      $password = htmlspecialchars($_POST["password"]);
      $password = sha1($password);
 
-     if(empty($_POST["username"]) OR empty($_POST["password"]))
-     {
+     if(empty($_POST["username"]) OR empty($_POST["password"])){
        $errorMsg ="username & password required";
      }
-     if(!empty($_POST["username"]) AND !empty($_POST["password"]))
-     {
-       $sqlLogin = $db->prepare('SELECT * FROM users WHERE username  =? AND password =?');
+     if(!empty($_POST["username"]) AND !empty($_POST["password"])){
+       $sqlLogin = $db->prepare('SELECT * FROM users WHERE username  = ? AND pass = ?');
        $sqlLogin->execute(array($username, $password));
        $logCount=$sqlLogin->rowCount();
 
        if($logCount > 0)
        {
-         while($row = $sqlLogin->fetch())
-         {
-             //header('location:index.php');
+         while($row = $sqlLogin->fetch()){
+           //header('location:index.php');
            $errorMsg ="You exists man";
            $_SESSION["name"] = $row["frstname"];
            $_SESSION["contact"] = $row["contact"];
@@ -30,54 +27,52 @@
            $_SESSION["username"] = $row["username"];
            $_SESSION["date_time"] = $row["date_time"];
            header('location:usedCars.php');
-             
          }
        }else
        {
-          $errorMsg ="Yes you are false";
+          $errorMsg ="Wrong login details!!";
        }
-
      }
   }
  
-
   include('includes/header.php');
 ?>
 <!DOCTYPE html>
 <html>
 <head>
 	<title>Contact</title>
+  <link rel="stylesheet" type="text/css" href="css/signin.css">
 </head>
 <body class="myMainCont">
 <div class="container-fluid" id="after_menu_gradiant">  
   </div>		
 	<div class="w3-container  " >
 		<div class="container-fluid" id="myMain">
-      <div class="w3-container">
-        <br><br><br>
-      </div>
-	 	<div class="box" id="box"> 	 	 	
+     
+	 	<div class="box" id="box">
+      <br>
 	 	 	 	 <p class="log">LOGIN</p>
-	 	 	 	<br><br>
-	 	 	 	<form method="POST" id="myForm" name="myForm" onmouseleave="return validation()">
-
+	 	 	 	<form method="POST" id="myForm" name="myForm" >
           <div id="sign_error"></div>
           <?php 
              if(isset($errorMsg))
              {
                ?>
-               <p><?php echo $errorMsg ?></p>
+               <p class="login_error_message animate zoom"><?php echo $errorMsg ?></p>
                <?php
              }
           ?>
+          <br>
 
 	 	 	 		<div class="form-group">
-	 	 	 			<input type="text" name="username" id="username"   required="" onload="ChangeColor()">
-	 	 	 			<label id="myLabel"><i class="icon ion-ios-contact" style="font-size: 14px;"></i> Username</label>
-	 	 	 		</div>
+	 	 	 			<input type="text" name="username" id="username" required="">
+            <p id="availability"></p>
+	 	 	 			<label id="myLabel"><b><i class="icon ion-ios-contact"></i> Username</b></label>
+             </div>
+             <br>
 	 	 	 		<div class="form-group">
-	 	 	 			<input type="password" name="password" id="password"  required="">
-	 	 	 			<label id="myLabel"><i class="icon ion-key"></i> Password</label>
+	 	 	 			<input type="password" name="password" id="password" required="">
+	 	 	 			<label id="myLabel"><b><i class="icon ion-key"></i> Password</b></label>
 	 	 	 		</div>
 	 	 	 		<div class="form-group">
 	 	 	 			<div class="row">
@@ -101,30 +96,19 @@
 
 </html>
 <script type="text/javascript">
-    var usernameField = document.forms["myForm"]["username"]; 
-    var passwordField = document.forms["myForm"]["password"];
-
-    function validation()
-    {
-       if(usernameField.value != "")
-       {
-         usernameField.style.border = "2px solid #29577a";
-         return true;
-       }
-       else if(usernameField.value == "")
-       {
-         usernameField.style.border ="1px solid #615E5E";
-       }
-       if(passwordField.value != "")
-       {
-         passwordField.style.border = "2px solid #29577a";
-         return true;
-       }
-       else if(passwordField.value == "")
-       {
-         passwordField.style.border ="1px solid #615E5E";
-       }
-    }
+    $("document").ready(function(){
+       $("#username").blur(function(){
+          var username = $(this).val();
+          $.ajax({
+            url : "check.php",
+            method : "POST",
+            data : {user_name:username},
+            dataType :"text",
+            success:function(html){
+               $("#availability").html(html);
+            }
+          });
+       });
+    });
 </script>
-
 

@@ -1,5 +1,9 @@
 <?php
   session_start();
+  if(!isset($_SESSION["name"]))
+  {
+    header('location:signin.php');
+  }
   include('includes/db.php');
   include('includes/header.php');
   //Tshilanda88
@@ -11,98 +15,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<style type="text/css">
-		.advert_form_div select 
-		 {
-		   margin-bottom: 10px;
-		   border-radius:0px;
-		   border:solid 1px #787878;
-		 }
-		 .advert_form_div input
-		 {
-		 	border-radius:0px;
-		 	border: solid 1px #787878;
-		 	margin-bottom: 10px;
-		 }
-		 .advert_form_div textarea
-		 {
-		 	border-radius:0px;
-		 	border: solid 1px #787878;
-		 	margin-bottom: 10px;
-		 }
-		 .btn_advertise
-		 {
-		 	background-color: #0c3272;
-		 	font-size: 17px;color: #fff;
-		 	margin-top: 20px;
-		 	border-radius: 0px;
-      padding: 7px 55px;
-      transition: 0.5s;
-		 }
-      .btn_advertise:hover
-     {
-      border:solid 1px #0c3272;
-      font-size: 17px;
-      color: #0c3272;
-      margin-top: 20px;
-      border-radius: 0px;
-      padding: 7px 55px;
-     }
-		 .vehicle_info
-		 {
-		 	font-size: 20px;color: #7f0a0a;
-      background-color:lightgray;
-      padding:10px ;padding: 10px;
-		 }
-
-  .input-file-container {
-  position: relative;
-  width: 100%;
-} 
-.js .input-file-trigger {
-  display: block;
-  padding: 10px 20px;
-  background: #39D2B4;
-  text-align: center;
-  color: #fff;
-  font-size: 1em;
-  transition: all .4s;
-  cursor: pointer;
-}
-.js .input-file {
-  position: absolute;
-  top: 0; left: 0;
-  width: 225px;
-  opacity: 0;
-  padding: 14px 0;
-  cursor: pointer;
-}
-.js .input-file:hover + .input-file-trigger,
-.js .input-file:focus + .input-file-trigger,
-.js .input-file-trigger:hover,
-.js .input-file-trigger:focus {
-  background: #34495E;
-  color: #39D2B4;
-}
-
-.file-return {
-  margin: 0;
-}
-.file-return:not(:empty) {
-  margin: 1em 0;
-}
-.js .file-return {
-  font-style: italic;
-  font-size: .9em;
-  font-weight: bold;
-}
-.js .file-return:not(:empty):before {
-  content: "Selected file: ";
-  font-style: normal;
-  font-weight: normal;
-}
-         
-	</style>
+	 <link rel="stylesheet" type="text/css" href="css/advert.css">
 	<script typecar_id DESCript">
    $(document).ready(function(){
       $("#make_name").on('change',function(){

@@ -1,0 +1,323 @@
+#main_container
+{
+  background-color: #f0efef;
+}
+
+.my_img img
+{
+  width: 100%;
+  transition: 1s;
+}
+.my_img img:hover
+{
+  opacity: 0.5;
+}
+.my_Text
+{
+  padding: 10px;
+  background-color: white;
+  text-align: center;
+}
+
+.home_form_footer
+{
+    background-color: #7f0a0a;
+    height: 50px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px; 
+}
+#main_container img
+{
+    /*height: 230px;*/
+     border-bottom: solid 2px #7f0a0a;
+}
+.btn_mode_details
+{
+    border-radius: 0px;
+    background-color: #d76f0a;
+    text-align: center;
+    border: solid 1px #d76f0a;
+    text-decoration-style: none;
+    text-decoration: none;
+    padding: 6px 13px;
+    transition: 1s;
+}
+.btn_mode_details:hover
+{
+  background-color: #7f0a0a;
+  border:solid 1px #7f0a0a;
+  text-decoration-style: none;
+  text-decoration:none;
+}
+.my_cars_cards  {
+    margin-bottom: 15px;
+}
+.my_cars_icons
+{
+    color: #9b9b9b;
+}
+.car_manuf_year
+{
+    color: #071236;
+  font-weight: bold;
+}
+.mycars_main_make
+{
+    color: #1a3794;
+    text-decoration: none;
+  text-decoration-style: none;
+    transition: 0.5s;
+}
+.mycars_main_make:hover
+{
+    color: #e2680f;
+    text-decoration-style: initial;
+  text-decoration: none !important;
+}
+#myIcons_car
+{
+  width: 93px;
+  height: 74px;
+  margin-left: auto;
+}
+#car_count
+{
+  padding-top:5px ;
+}
+#car_count span
+{
+  color: white;
+  font-size: 15px;
+  font-weight: lighter;
+}
+.my_icons
+{
+  font-size: 30px;color: white;
+}
+.container_icons a
+{
+  text-decoration: none;
+}
+.container_icons a:hover
+{
+  text-decoration: none;
+}
+ #pagination_active
+{
+  background-color: #6b084b !important;
+  color: white  !important;
+}
+#pagination_list li a
+{
+  margin-right: 3px;
+  background-color: transparent;
+  border:solid 1px #6b084b;
+  padding: 6px 11px;
+  color: black;
+  font-size:17px;
+  transition:1s;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.19);
+}
+ #pagination_list li a:hover
+ {
+     background-color: #6b084b;
+     color: white;
+ }
+
+ .main_pagination
+ {
+   margin-left: 20px;
+ }
+ select{
+  border:1px solid #777;
+  padding: .8rem 3rem .8rem .5rem;
+  border-radius: 3px;
+  color:#B00A50;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  background-color:blue;
+  cursor: pointer;
+}
+
+.imgBgMethod, .borderMethod,.glyphIconMethod{
+  display: inline-block;
+  position: relative;
+  width: 100%;
+}
+
+.imgBgMethod select{
+  background: #fff url("http://i68.tinypic.com/9t3d3d.png ") no-repeat 95% 50%;
+}
+
+.borderMethod select, .glyphIconMethod select{background: #fff;width: 100%; color:#4D4D4D;}
+
+.borderMethod::after{
+  content: "";
+  display: inline-block;
+  border-top: 6px solid #4D4D4D;
+  border-right:6px solid transparent;
+  border-left:6px solid transparent;
+  position: absolute;
+  top:calc(50% - 5px);
+  right:.5rem;
+  z-index: 0;
+  pointer-events: none;
+}
+.glyphIconMethod::after{
+  content: " \f13a";
+  font-family: "FontAwesome";
+  color: #fff;
+  position: absolute;
+  right:.5rem;
+  top:15px;
+  z-index: -1;
+  pointer-events: none;
+}
+
+select:focus{
+  border: 1px solid blue;
+}
+
+select::-ms-expand{
+  display: none;
+}
+#searchResults
+{
+margin-top: 30px;
+}
+/*My slide show Index Page*/
+.cycle-slideshow img
+{
+  max-width: 100%;
+}
+.cycle-slideshow
+{
+  max-width: 100%;
+  padding: 0;
+  margin: auto !important;
+  top: 0;
+  position: relative;
+  display: block;
+  overflow: hidden;
+  z-index: 99;
+}
+.cycle-pager
+ {
+  width:100% !important;
+  position: absolute !important;
+  bottom:20px !important;
+  text-align: center !important;
+  z-index: 9999 !important;
+}
+.cycle-pager span
+{
+  white-space: nowrap !important;
+  text-indent: 100% !important;
+  width: 10px !important;
+  height: 10px !important;
+  display: inline-block !important;
+  border:solid 1px #ffffff !important;
+  border-radius: 50% !important;
+  margin: 0 5px !important;
+}
+.cycle-pager .cycle-pager-active
+{
+  background-color: #ffffff !important;
+}
+
+/*Search Form Style*/
+.form_div
+{
+  background: rgba(0,0,0,0.6);
+  height:380px ;
+  border-radius: 10px;
+  width: 300px;
+  margin-right: 8px;
+  right: 0;
+  top: 0;
+  margin-top: 125px;
+  position: fixed;
+  z-index: 9999999999;
+  border:solid 2px #7f0a0a;
+}
+#form_div
+{
+  animation-duration: 2s;
+  animation-iteration-count: 1;
+  -webkit-animation-duration:2s;
+  -webkit-animation-iteration-count:1;
+  -moz-animation-duration:2s;
+  -moz-animation-iteration-count:1;
+  -o-animation-duration:2s;
+  -o-animation-iteration-count:1;
+}
+
+.form_div_Scroll
+{
+  border:solid 2px #7f0a0a;
+  position: relative;
+  background: rgba(0,0,0,0.5);
+  height: 350px;
+  border-radius: 10px;
+  width: 300px;
+  margin-right: 5px;
+  right: 0;
+}
+.form_header
+{
+  background: #7f0a0a;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.search_title
+{
+  text-align: center;
+  color: white;
+  margin-top: -5px;
+  font-size: 15px;
+  padding: 13px;
+}
+.actual_form
+{
+  padding: 10px;
+}
+.form-group select, input[type=text]
+{
+  width: 100%;
+  /*height: 40px;*/
+  border-radius: 0px;
+}
+
+.ion-ios-search-strong
+{
+  font-size: 27px;
+  color: white;
+  font-weight: normal;
+}
+.ion-ios-search-strong:hover
+{
+  color: black;
+  font-weight: none;
+}
+#mySearchBtn
+{
+  background-color: #7f0a0a;
+  border-radius: 0px;
+  text-align: center;
+  transition: 2s;
+}
+#mySearchBtn:hover
+{
+  background-color: #430505;
+  color: black;
+  text-align: center;
+  cursor: pointer;
+  border:solid 1px #969696;
+}
+
+/*RESPONSIVE FORM */
+@media (min-width: 700px) 
+{
+    #form_div{display: none;}
+}

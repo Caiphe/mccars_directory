@@ -1,78 +1,12 @@
-<?php
-  include('includes/db.php');
-  if(isset($_POST["btnNewsLetter"]))
-  {
-  	$newsletter_email = htmlspecialchars($_POST["email"]);
-  	if(empty($_POST["email"]) && !filter_var($newsletter_email, FILTER_VALIDATE_EMAIL))
-  	{
-      $error_msg =  "A valid email is required";
-  	}
-  	else
-  	{
-  	  $checkEmail=$db->prepare('SELECT * FROM newsletteremail WHERE email = ?');
-      $checkEmail->execute(array($newsletter_email));
-  	  $count = $checkEmail->rowCount();
-  	  if($count == 1)
-  	  {
-  	  	$error_msg = "Oooops!! This email exist already. Try Again";
-  	  	unset($newsletter_email);
-  	  }
-  	  else
-  	  {
-  	  	$sqlInsert =$db->prepare("INSERT INTO newsletteremail(email) VALUES(?)");
-        $sqlInsert->execute(array($newsletter_email));
-        unset($newsletter_email);
-        $successMsg ="Your are now registered for our newsletter";
-  	  }     
-  	}
-  }
-?>
 
 <!DOCTYPE html>
 <html>
 <head>
 	<title></title>
 	<script type="text/javascript" scr="js/jquery-3.3.1.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/footer.css">
 	<style type="text/css">
-		.myTableContact
-		{
-			margin-left: 38px;
-			margin-bottom: 20px;
-		}
-		.social_footer
-		{
-			margin-top: 10px;
-		}
-		.social_footer li
-		{
-		  right: 0;
-		  text-decoration: none;
-		  list-style: none;
-		  list-style-type: none;
-		  color: #EBECEB;
-		  margin-left: 20px;
-		  display: inline-table;
-		  font-size: 17px;
-		  padding: 5px 13px;
-		  border:solid 1px #EBECEB;
-		  border-radius:20px;
-		  transition: 0.5s;
-		}
-		.social_footer li:hover
-		{
-		  opacity: 0.5;
-		  background-color:#EBECEB;
-		  color: black;
-		}
-		.social_footer li a
-		{
-		  color: #EBECEB;
-		  transition: 0.5s;
-		}
-		.social_footer li a:hover
-		{
-			color: black;
-		}
+	
 	</style>
 </head>
 <body>
@@ -104,34 +38,12 @@
  	<div class="w3-row">
  		<div class="w3-half" align="center">
  			<p class="reg_text">Sign up for Our newsletter !!!</p>
- 			<form method="POST" id="myForm" name="myForm" onsubmit="return Validation()">
+ 			<div  id="myForm" name="myForm" >
  				<input type="email" class="" name="email" id="email" placeholder="Email address"> &nbsp;
  				<button type="submit" name="btnNewsLetter" id="btnNewsLetter" class=" btn btn-default"> 
  					<i class=""></i> REGISTER</button><br>
                   <div class="email_error_js" id="email_error_js"></div>
- 			  </form>
- 			   <?php
-                 if(isset($successMsg))
-                 {
-                 	?>
-                 	<div class="animated slideInLeft success_msg_animation"  id="successMsg" name="successMsg">
-                 	 <p class="Newsletter_error "><i class="icon ion-android-checkmark-circle"></i> <?php echo $successMsg ?></p> 
-                 	</div>
-                 	<?php
-                 }
- 			   ?>
- 			    
- 			    <?php
-                 if(isset($error_msg))
-                 {
-                  ?>
-                 <div class="animated slideInLeft error_msg_animation" id="newsletter_error_msg">
-                  <p class="newsletter_erro"><i class="icon ion-alert"></i> <?php echo $error_msg ?></p>
-                 </div>
-                 <?php
-                 }
- 			   ?>
-
+ 			  </div>
  		</div>
  		<div class="w3-half" align="center">
  			<p class="newletterText">
@@ -221,6 +133,23 @@
 </body>
 </html>
 <script type="text/javascript">
+	$("document").ready(function(){
+		$("#email").blur(function(){
+			var email = $(this).val();
+			$.ajax({
+				url:"newsEmailCheck.php",
+				method :"POST",
+				data :{email : email},
+				dataType:"text",
+				success:function(html){
+                  $("#email_error_js").html(html);
+				} 
+			});
+		});
+	});
+</script>
+<script type="text/javascript">
+	/*
 	 var email = document.forms["myForm"]["email"];
      var email_error = document.getElementById("email_error_js");
      email.addEventListener("blur", emailVerify,true);
@@ -243,15 +172,13 @@
      		email_error.innerHTML ="";
      		return true;
      	}
-     }
+     }*/
 </script>
 <script type="text/javascript">
 	 setTimeout('hideMsg()', 4000);
   function hideMsg(){
     $("#newsletter_error_msg").hide("3000");
 }
-</script>
-<script type="text/javascript">
 	 setTimeout('cach()', 3000);
   function cach(){
     $("#successMsg").hide("4000");

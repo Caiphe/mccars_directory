@@ -48,53 +48,7 @@
   <title>Home</title>
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-  <script type="text/javascript">
-      google.charts.load('current', {'packages':['bar']});
-      google.charts.setOnLoadCallback(drawChart);
 
-      function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-          ['Year', 'Sales', 'Expenses', 'Profit'],
-          ['2015', 1000, 400, 200],
-          ['2016', 1170, 460, 250],
-          ['2017', 660, 1120, 300],
-          ['2018', 1030, 540, 350]
-        ]);
-
-        var options = {
-          chart: {
-            title: 'Company Performance',
-            subtitle: 'Sales, Expenses, and Profit: 2016-2018',
-          }
-        };
-
-        var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
-
-        chart.draw(data, google.charts.Bar.convertOptions(options));
-      }
-    </script>
-    <script type="text/javascript">
-      google.charts.load("current", {packages:["corechart"]});
-      google.charts.setOnLoadCallback(drawChart);
-      function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-          ['Task', 'Hours per Day'],
-          ['Work',     15],
-          ['Eat',      1],
-          ['Communicate',  1],
-          ['Research',     4],
-          ['Sleep',    4]
-        ]);
-
-        var options = {
-          title: 'WHAT WE DO ',
-          is3D: true,
-        };
-
-        var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
-        chart.draw(data, options);
-      }
-    </script>
 </head>
 
 <body>
@@ -143,29 +97,12 @@
 
         </div>
         <br><br>
-        <div class="row">
-          <div class="col-lg-8 col-md-12">
-              <div id="columnchart_material" style="width: 100%; height: 300px;"></div>
-          </div>
-          <div class="col-md-4">
-             <div id="piechart_3d" style="width: 100%; height:400px;"></div>
-          </div>
-        <div class="row">
-        
-          <div class="col-md-3">
-
-          </div>
-        </div>
-      </div>
+       
         <br><br>
       </section>
-      <div class="text-right">
-        <div class="credits">
-        </div>
-      </div>
-    </section>
-    <!--main content end-->
-  </section>
+       
+
+    
   <!-- javascripts -->
 <?php include('script.php'); ?>
     <script>

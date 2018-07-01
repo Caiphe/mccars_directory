@@ -39,21 +39,22 @@
   <link href="css/elegant-icons-style.css" rel="stylesheet" />
   <link href="css/font-awesome.css" rel="stylesheet" />
   <link href="css/style.css" rel="stylesheet">
+  <link href="css/login.css" rel="stylesheet">
   <link href="css/style-responsive.css" rel="stylesheet" />
   <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
 </head>
 
 <body class="login_big">
   <div class="container">
-    <form class="login-form" method="POST">
-      <div class="login-wrap">
+    <form class="login-form" method="POST" >
+      <div class="login-wrap" >
         <p class="login-img"><i class="icon_lock_alt"></i></p>
-        <p class="adminLog animated zoom" style="text-align: center;font-size: 30px;color: black;">ADMIN LOGIN</p>
+        <p class="adminLog animated zoom" id="adminLog" >ADMIN LOGIN</p>
         <?php
            if(isset($errorMessage))
            {
            	 ?>
-           	   <p style="text-align:center;color:#fff;background-color: #930e0e;padding: 5px;" id="ErrorMessage"><?php echo $errorMessage; ?></p>
+           	   <p class="animated slideInLeft" id="ErrorMessage"><?php echo $errorMessage; ?></p>
            	 <?php
            }
         ?>
@@ -67,6 +68,7 @@
         </div>
         <button class="btn btn-primary btn-lg btn-block" type="submit" name="btn_submit" id="btn_submit">Login</button>
       </div>
+      <br>
     </form>
     <div class="text-right">
       <div class="credits">          
@@ -78,6 +80,6 @@
 <script type="text/javascript">
   setTimeout('errormessage()',3000);
   function errormessage(){
-    $("#ErrorMessage").hide("slow");
+    $("#ErrorMessage").fadeOut(2000);
   }
 </script>

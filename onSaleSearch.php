@@ -26,6 +26,7 @@
     z-index: 9999;
   }
 </style>
+<link rel="stylesheet" type="text/css" href="">
 <?php 
  //echo $_POST["model_name"];
   session_start();
@@ -46,14 +47,23 @@
         $sqlCount = $sqlSearch->rowCount();
         //'.$sqlCount.'
 
+        //SUGGESTIONS
+        function sugestion(){
+          $sugg = $db->prepare('SELECT * FROM car_data WHERE make_name = ? LIMIT 4 ');
+          $sugg->execute(array($make_name));
+          $sugestCount = $sugg->rowCount();
+
+        }
+
         if($sqlCount > 0)
         {
-           while($result = $sqlSearch->fetch())
-           {
+          $result = $sqlSearch->fetch();
+
+          foreach ($result as $sqlSearch => $value) {
               $output = '
               <div class="animated slideInUp my_result_search" >
               <div class="container "  id="myMainSearch">
-               <p id="success_result"><i class="icon ion-android-checkmark-circle"></i>  SEARCH RESULT</p>
+               <p id="success_result"><i class="icon ion-android-checkmark-circle"></i> '. $sqlCount.'  SEARCH RESULT</p>
                  <div class="row">
                   
                       <div class="col-md-3">

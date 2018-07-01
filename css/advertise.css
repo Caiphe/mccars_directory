@@ -1,0 +1,180 @@
+* {box-sizing: border-box;}
+body {font-family: Verdana, sans-serif;}
+.mySlides {display: none;}
+img {vertical-align: middle;}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+.packages_price
+{
+  width: 60%;
+  background-color: #fff;
+}
+.my_real_card
+{
+  padding: 10px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 8px 0 rgba(0, 0, 0, 0.19);
+  min-width: 100%;
+}
+.packages_price h4
+{
+  font-size: 25px;
+}
+.feature_header
+{
+  width: 100%;
+  background: #082277;
+  padding: 3px;
+  color: white;
+  font-size: 30px;
+}
+.feature_footer1
+{
+  background: #082277;
+  height: 10px;
+}
+.feature_header2
+{
+  width: 100%;
+  background: #f7b000;
+  padding: 3px;
+  color: white;
+  font-size: 30px;
+}
+.feature_footer2
+{
+  background: #f7b000;
+  height: 10px;
+}
+.click_advert_p1
+{
+  border-radius: 0px;
+  padding: 7px 15px;
+  border:solid 1px #082277;
+  transition: 1s;
+  color: #082277;
+  background-color: transparent ;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 4px 0 rgba(0, 0, 0, 0.19);
+}
+.click_advert_p1:hover
+{
+  background:#082277;
+  background-color: #082277;
+  color: white;
+  border:solid 1px #fff;
+}
+.click_advert_p2
+{
+  border-radius: 0px;
+  padding: 7px 15px;
+  border:solid 1px #f7b000;
+  transition: 1s;
+  color: #f7b000;
+  background-color: transparent ;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 4px 0 rgba(0, 0, 0, 0.19);
+}
+.click_advert_p2:hover
+{
+  background:#f7b000;
+  background-color: #f7b000;
+  color: white;
+  border:solid 1px #fff;
+}
+.stars_small
+{
+  font-size: 17px;
+  color: #dbdad8;
+}
+.stars_medium
+{
+  font-size: 22px;
+  color: #d9d9d9;
+}
+.stars_large
+{
+  font-size: 27px;
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .text {font-size: 11px}
+}
+.why_mccars
+{
+  color: #7f0a0a;
+}
+.why_mccars_div h3
+{
+  color: #082277;
+}
+.packages h3
+{
+  color: #616161;
+  font-weight: bold;
+}
+.myMainCont
+{
+  margin-top: 3px;
+}
+.mychevron
+{
+  margin-top: 100px;
+  background-color: transparent;
+}

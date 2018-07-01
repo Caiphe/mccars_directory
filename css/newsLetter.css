@@ -1,0 +1,90 @@
+/*Newsletter*/
+.myNewLetter
+{
+  background-color: #dddddd;
+  padding: 20px;
+}
+.newletterText
+{
+  text-align: center;
+  color: #6d6d6d;
+  font-size: 14px;
+}
+.myNewLetter input
+{
+  width: 50%;
+  height: 32px;
+  padding-left: 10px;
+  animation-duration: 3s;
+  -webkit-animation-duration:3s;
+  -moz-animation-duration:3s;
+  -o-animation-duration:3s;
+}
+.myNewLetter button
+{
+  border-radius: 0px;
+  background: #7f0a0a;
+  border:solid 1px white;
+  color: white;
+  transition: 1s;
+}
+.myNewLetter button:hover
+{
+  border:1px solid #7f0a0a;
+  color: #7f0a0a;
+}
+#email_error
+{
+  color: #7f0a0a;
+  text-align: justify;
+  margin-left: 16%;
+  -webkit-animation-duration:2s;
+  -o-animation-duration: 2s;
+  -moz-animation-duration: 2s;
+  animation-duration: 2s;
+}
+.reg_text
+{
+   text-align: justify;
+   margin-left: 17%;
+   font-size: 18px;
+   font-weight: bold;
+}
+.success_msg_animation
+{
+  background-color: #08661c;
+  border-radius: 0px;
+  color: white;
+  padding: 5px;
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+  width: 67%;
+  z-index: 9999;
+  position: fixed;
+
+  -webkit-animation-duration:2s;
+  -moz-animation-duration:2s;
+  -o-animation-duration: 2s;
+  animation-duration: 2s;
+}
+
+#newsletter_error_msg
+{
+  background-color: #7f0a0a;
+  color: white;
+  padding: 0px 5px;
+  overflow: hidden;
+  position: relative;
+  width: 67%;
+  -webkit-animation-duration:2s;
+  -moz-animation-duration:2s;
+  -o-animation-duration: 2s;
+  animation-duration: 2s;
+}
+#email_error_js
+{
+  color: #9a0f0f;
+  text-align: center;
+  margin-left: -275px;
+}

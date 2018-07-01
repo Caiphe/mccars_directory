@@ -10,10 +10,11 @@
    if(!empty($first_name) && !empty($second_name) && !empty($contact_number) && !empty($email_address) && !empty($contact_message))
    {
    	  if(filter_var($email_address, FILTER_VALIDATE_EMAIL) === false){
-	     echo = "Valid Email required";
+	     echo 'Valid Email required';
+       echo "string";
 	   }
 	   if(!preg_match("/^[0-9]*$/",$contact_number)){
-          echo = '<p class="error_message">Only numbers required on your Contact Number</p>';
+          echo '<p class="error_message">Only numbers required on your Contact Number</p>';
           unset($contact_number);
        }
    $toEmail = 'mardesign1@gmail.com';
@@ -29,14 +30,14 @@
              $headers .= "From :".$first_name."<".$contact_number.">" ."\r\n";
 
              if(mail($toEmail, $subject, $body, $headers)){
-             	echo = '<p class="sucess_message">Your email has been sent</p>';
+             	echo "<p class='error_message'>Your email was not sent</p>";
              }else
              {
-             	echo = '<p class="error_message">Your email was not sent</p>';
+             	echo "<p class='error_message'>Your email was not sent</p>";
              }
     	 }
-    }else
+    else
     {
-       echo = '<p class="error_message">All fields are required</>';
+        echo "<p class='error_message'>Your email was not sent</p>";
     }
 ?>

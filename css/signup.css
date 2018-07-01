@@ -1,0 +1,143 @@
+#form_submit input{
+    border: solid 1px #7b7b7b ;
+ }
+#form_submit button{
+    margin-bottom: 5px;}
+#signupSubmit{
+    border-radius: 0px; }
+.signup_error{
+    font-size: 13px;
+    margin-left: 0px;
+    font-weight: bold;
+}
+.success_insert{
+    text-align: center;
+    padding: 5px;
+    background-color: #296605;
+    color:white;
+}
+.error_insert{
+    text-align: center;
+    padding: 5px;
+    background-color: #56071e;
+    color:white;
+}
+ .reg_form
+ {
+   width:25%;
+   margin: 50px auto ;
+   background-color: #fff;
+   padding: 30px;
+   min-width: 250px;
+   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.4), 0 1px 3px 0 rgba(0, 0, 0, 0.14);
+   z-index: 9999;
+   border-radius: 3px;
+ }
+ .reg_form input
+ {
+   border: solid 1px #7b7b7b ;
+   border-radius: 2px;
+   height: 38px;
+   background-color: transparent;
+   padding-left: 10px;
+   font-weight: bold
+   
+ }
+ .reg_form select
+ {
+   background-color: transparent;
+   border:solid 1px #2b2b2a;
+ }
+#signupSubmit
+ {
+   background-color: #7f0a0a;
+   text-decoration: none;
+   text-decoration-style: none;
+   color: white;
+   padding: 7px;
+   text-align: center;
+   border-radius: 3px;
+   font-weight: bold;
+   font-size: 13px;
+   cursor: pointer;
+   border:solid 1px transparent;
+   transition: 1s;
+   font-family: 'Fjalla One', sans-serif;
+ }
+ #signupSubmit:hover
+ {
+    transition: 1s;
+    background-color: white !important;
+    font-style: 14px;
+    color: #7f0a0a;
+    border-radius: 3px;
+    cursor: pointer;
+    border:solid 1px #7f0a0a;
+    border-radius: 0px;
+    font-family: 'Fjalla One', sans-serif;
+ }
+ #loginBtn
+ {
+   background-color:#020233;
+   text-decoration: none;
+   text-decoration-style: none;
+   color: #ffffff;
+   padding: 7px;
+   font-weight: bold;
+   text-align: center;
+   font-size: 14px;
+   cursor: pointer;
+   border-radius: 3px;
+   border:solid 1px #020233;
+   transition: 1s;
+   font-family: 'Fjalla One', sans-serif;
+   text-decoration-style: none;
+   text-decoration: none;
+ }
+ #loginBtn:hover
+ {
+    transition: 1s;
+    background-color:transparent !important;
+    font-style: 18px;
+    color: #020233;
+    border-radius: 3px;
+    cursor: pointer;
+    border:solid 1px #020233;
+    border-radius: 0px;
+    font-family: 'Fjalla One', sans-serif;
+    text-decoration-style: none;
+    text-decoration: none;
+ }
+ .signup_form_title
+ {
+   padding: 10px;
+   font-size: 20px;
+   text-align: center;
+   border:0px;
+   color: black;
+ }
+ .signup_error_message
+ {
+   background-color: #e47911;
+   padding: 10px;
+   text-align: center;
+   color: white;
+   margin-bottom:10px;
+ }
+ #signup_success_msg
+ {
+   background-color: #132d09;
+   padding: 10px;
+   text-align: center;
+   color: white;
+   margin-bottom:10px;
+ }
+ .log
+ {
+  margin: 0 0 20px;
+  padding: 0;
+  color: rgba(163, 163, 163, 0.822);
+  text-align: center;
+  font-size: 35px;
+  font-weight: bold;
+ }

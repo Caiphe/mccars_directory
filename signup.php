@@ -28,7 +28,6 @@
       }
        else
        {
-
           $checkUsername = $db->prepare('SELECT * FROM users WHERE username = ?');
           $checkUsername ->execute(array($username));
           $countUsername = $checkUsername->rowCount();
@@ -41,9 +40,14 @@
 
             if($emailCount == 0)
             {
-              $insertQuery = $db->prepare('INSERT INTO users(frstname, contact,email, username, password, user_code) VALUES(?, ?, ?, ?, ?, ?)');
+              $insertQuery = $db->prepare('INSERT INTO users(frstname, contact,email, username, pass, user_code) VALUES(?, ?, ?, ?, ?, ?)');
               $insertQuery->execute(array($frstname, $contat_number, $email_address, $username, $password, $usercode ));
               $insert_success ="You are registered ";
+              unset($frstname);
+              unset($contact_number);
+              unset($email_address);
+              unset($username);
+              unset($password);
           }else
           {
              $insert_error ="Email Exist already";
@@ -64,15 +68,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>sign_up</title>
+  <title>sign_up</title>
+  <link rel="stylesheet" type="text/css" href="css/signup.css">
   <style type="text/css">
-    #form_submit input{border: solid 1px #7b7b7b ; }
-    #form_submit button{margin-bottom: 5px;}
-    .signup_form_title{} 
-    #signupSubmit{border-radius: 0px; }
-    .signup_error{font-size: 13px;margin-left: 0px;}
-    .success_insert{text-align: center;padding: 5px;background-color: #296605;color:white;}
-    .error_insert{text-align: center;padding: 5px;background-color: #56071e;color:white;}
+     input{
+      width: 100%;
+     }
   </style>
 </head>
 <body>		
@@ -83,47 +84,42 @@
 		  <form method="POST" id="form_submit" >
         <p class="log">SIGN UP</p>
         <p id="success_error"></p>
-        <?php if(isset($insert_success))
-            {
-               ?>
-               <p class="success_insert"><?= $insert_success ?></p>
-            <?php
-            }
-            ?>
-            <?php if(isset($insert_error))
-            {
-               ?>
-               <p class="error_insert"><?= $insert_error ?></p>
-               <?php
-            }
-            ?>
+              <?php if(isset($insert_success))
+                {
+                   ?>
+                   <p class="success_insert"><?= $insert_success ?></p>
+                <?php
+                }
+                ?>
+                <?php if(isset($insert_error))
+                {
+                   ?>
+                   <p class="error_insert"><?= $insert_error ?></p>
+                   <?php
+                }
+              ?>
            <div class="form-group">
-             <input type="text" name="frstname" class="form-control frstn" id="frstname" placeholder="Name" maxlength="20">
+             <input type="text" name="frstname"  id="frstname" placeholder="Name" maxlength="20" value="<?php echo isset($frstname) ? $frstname:''; ?>">
              <span class="signup_error" id="name_error"></span>
            </div> 
            <div class="form-group">
-             <input type="number" name="contat_number" class="form-control" id="contat_number" placeholder="Contact Number">
-             <span class="signup_error" id="contact_error"></span>
+             <input type="number" name="contat_number"  id="contat_number" placeholder="Contact Number">
+             <span class="signup_error" id="contact_error" value="<?php echo isset($contat_number) ?  $contact_number:''; ?>"></span>
            </div>
-           <!--<div class="form-group">
-             <input type="email" name="email_address" class="form-control" id="email_address" placeholder="Email address">
-             44 Ke Masinga Road
-             <span class="signup_error" id="email_error"></span>
-           </div>-->
             <div class="form-group">
-             <input type="email" name="email_address" class="form-control" id="email_address" placeholder="Email Address">
-             <span class="signup_error" id="email_error"></span>
+             <input type="email" name="email_address"  id="email_address" placeholder="Email Address">
+             <span class="signup_error" id="em_error" value="<?php echo isset($email_address) ? $email_address:''; ?>"></span>
            </div>
            <div class="form-group">
-             <input type="text" name="username" class="form-control" id="username" placeholder="Username" maxlength="20">
-             <span class="signup_error" id="username_error"></span>
+             <input type="text" name="username"  id="username" placeholder="Username" maxlength="20">
+             <span class="signup_error" id="username_error" value="<?php echo isset($username) ? $username:''; ?>"></span>
            </div>
            <div class="form-group">
-             <input type="password" name="password" class="form-control" id="password" placeholder="Password" maxlength="20">
-             <span class="signup_error" id="password_error"></span>
+             <input type="password" name="password"  id="password" placeholder="Password" maxlength="20">
+             <span class="signup_error" id="password_error" value="<?php echo isset($password) ? $password:''; ?>"></span>
            </div>
            <div class="form-group">
-             <input type="password" name="confirm_password" class="form-control" id="confirm_password" placeholder="Confirm Password">
+             <input type="password" name="confirm_password"  id="confirm_password" placeholder="Confirm Password">
              <span class="signup_error" id="confrim_error" maxlength="20"></span>
            </div>
         
@@ -135,8 +131,6 @@
              		<a type="submit" href="signin.php" name="loginBtn" id="loginBtn" class="btn btn-default btn-block"><i class="icon ion-ios-contact-outline"></i> LOGIN</a>
              	</div>
              </div>
-            
-         
 	     </form>
 		</div>
 		<br>
@@ -150,7 +144,7 @@
    $(document).ready(function(){
       $("#name_error").hide();
       $("#contact_error").hide();
-      $("#email_error").hide();
+      $("#em_error").hide();
       $("#username_error").hide();
       $("#password_error").hide();
       $("#confrim_error").hide();
@@ -186,7 +180,6 @@
       check_confirm();
       });
      
-
      function check_name()
      {
        var frstname = $("#frstname").val().length;
@@ -227,13 +220,13 @@
        var pattern =/^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
        if(pattern.test(email_address) && email_address !== '')
        {
-         $("#email_error").fadeOut(500);
-         $("#email_address").css('border','solid 1px #105f0e');
+         $("#em_error").fadeOut(500);
+         $("#em_error").css('border','solid 1px green');
        }else{
-          $("#email_error").fadeIn(1000);
-          $("#email_error").css('color','#7f0707',);
+          $("#em_error").fadeIn(1000);
+          $("#em_error").css('color','#7f0707',);
           $("#email_address").css('border','solid 1px #7f0707');
-          $("#email_error").html("Valid Email required");
+          $("#em_error").html("Valid Email required");
           error_contact = true;
          
        }
@@ -292,6 +285,7 @@
           $("#confrim_error").css('color','#7f0707','font-size','25px');
           $("#confirm_password").css('border','solid 1px #7f0707');
           $("#confrim_error").html("Passwords don't match");
+          $("#signupSubmit").disabled() == true;
          }
          else
          {
@@ -346,11 +340,10 @@
       function success_Msg(){
         $(".success_insert").fadeOut(100);
       }
-</script>
-<script type="text/javascript">
+
       setTimeout('msgError()',4000);
       function msgError(){
-        $(".error_insert").fadeOut(100);
+        $(".error_insert").fadeOut(2000);
       }
 </script>
 

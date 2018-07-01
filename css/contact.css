@@ -1,0 +1,82 @@
+.contact_div{
+    background: #ffffff;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.4), 0 1px 2px 0 rgba(0, 0, 0, 0.14);
+    border-radius: 3px;
+    padding: 30px;
+    margin-bottom: 10px;
+}
+
+.contact_header
+{
+  height: px;
+  background-color: #818181;
+
+}
+#myContactForm input
+{
+  padding-left: 10px;
+  height: 40px;
+  border-radius: 0px;
+  font-size: 15px;
+  border: solid 1px #545454;
+  background-color: transparent !important;
+  background:transparent !important;
+  margin-bottom: 10px;
+}
+#myContactForm textarea
+{
+  width: 100%;
+  border:solid 1px #545454;
+  background-color: transparent;
+  border-radius: 0px;
+  padding-left: 10px;
+  height:130px;
+}
+#btn_submit
+{
+  margin-top: 10px;
+  background-color: #7f0a0a;
+  border:0;
+  border-radius: 0px;
+  color: white;
+  padding: 10px;
+  font-size: 20px;
+  transition: .5s;
+  font-weight: bold;
+  border:solid 1px transparent;
+}
+#btn_submit:hover
+{
+  border:solid 1px #7f0a0a;
+  background-color: transparent;
+  color: #7f0a0a;
+  font-size: 20px;
+}
+.cont_Main
+{
+  font-size: 30px;
+  margin-bottom: 20px;
+  text-align: justify;
+  color: #979797;
+}
+.get_in_touch
+{
+  font-size: 20px;
+  color: #979797;
+  font-weight: bold;
+}
+
+.contact_div .icon
+{
+  color: #7f0a0a;
+  font-size: 40px;
+}
+.myContactDetail
+{
+  border-bottom: solid 2px #d5d5d5;
+}
+.get_in
+{
+  font-size: 30px;
+  color: #8f8f8f;
+}

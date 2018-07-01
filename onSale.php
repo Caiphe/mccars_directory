@@ -12,44 +12,12 @@
    }else{
    	$carCount = 0;
    }
-
-   if(isset($_POST["submit_alert"]))
-  {
-  	$alert_email = htmlspecialchars($_POST["alert_email"]);
-  	if(empty($_POST["alert_email"]))
-  	{
-  		$error = "Valid email required";
-  	}
-  	else
-  	{
-  		if(!filter_var($alert_email, FILTER_VALIDATE_EMAIL))
-  		{
-  			$error ="Valid email required";
-  		}else
-  		{
-  			$CheckExist = $db->prepare("SELECT * FROM alert_email WHERE email_alert = ?");
-  			$CheckExist->execute(array($alert_email));
-  			$emailCount = $CheckExist->rowCount();
-
-  			if($emailCount > 0)
-  			{
-  				$error ="Email Exist already";
-  			}
-  			else
-  			{
-  				$slqAlertEmail = $db->prepare("INSERT INTO alert_email (email_alert)VALUES(?)");
-	  			$slqAlertEmail->execute(array($alert_email));
-	  			$alert_success = "Thank you.You'll be email when a new car";
-  			}  			
-  		}
-  	 }
-  }
-
 ?>
 <!DOCTYPE html>
 <html>
 <head>
 <title>used_cars</title>
+<link rel="stylesheet" type="text/css" href="css/onSale.css">
 <script type="text/javascript">
    $(document).ready(function(){
       $("#make_name").on('change',function(){
@@ -71,251 +39,11 @@
    });
  </script>
 <style type="text/css">
-    .thumbnail
-    {
-    	background-color: transparent;
-    	background: transparent;
-    	border:solid 2px transparent;
-    	color: transparent;
-    }
-	.news_cars_main_table
-	{
-		font-size: 13px;
-		color: #8a8787;
-		text-align: justify;
-	}
-	.news_cars_thumnail
-	{
-		border:solid 1px transparent !important;
-	}
-	#new_car_main_image
-	{
-		border-radius: 0px;
-		border:0px;
-		//height: 170px;
-		width: 100%;
-		box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.19);
-	}
-	.main_user_car_title
-	{
-		font-size: 18px;
-	    font-weight: bold;
-	    color: #7f0a0a;
-	    text-align: justify;
-	    text-decoration-style: none;
-	    text-decoration: none;
-	}
-	.news_car_details
-	{
-		background-color: #fff;
-		border:0px;
-	}
-	.news_car_details:over
-	{
-		background-color: #7f0a0a;
-		color: white;
-	}
-	.new_car_details_info
-	{
-		padding: 10px;
-	}
-	.news_cars_span_year
-	{
-		font-style: 
-	}
-	#new_car_price
-	{
-		float: right;
-		font-size: 23px;
-		margin-top: -55px;
-		z-index: 9999;
-		font-weight: bold;
-		color: #c2580b;
-	}
-	#availability
-	{
-		float: right;
-		font-size: 18px;
-		margin-top: -20px;
-		z-index: 9999;
-		font-weight: bold;
-		color: #103a89;
-		-webkit-animation-iteration-count:infinite;
-		-webkit-animation-duration:4s;
-	}
-	#bottom_buttons
-	{
-		float: right;
-	}
-	#get_alert
-	{
-		text-decoration: none;
-		text-decoration-style: none;
-		text-decoration-line: none;
-		text-align: center;
-		background-color: #ee560b;
-		border:solid 1px transparent !important;
-		transition: 0.5s;
-	}
-	#get_alert:hover
-	{
-		background-color: #883810;
-		color: white;
-	}
-	#read_more
-	{
-		text-decoration: none;
-		text-decoration-style: none;
-		text-decoration-line: none;
-		text-align: center;
-		background-color: #0B7A3E;
-		transition: 0.5s;
-	}
-	#read_more:hover
-	{
-		background-color: #063f22;
-		color: white;
-	}
-	.alert_box
-	{
-		display: none;
-		position: fixed;
-		z-index: 9999;
-		margin-bottom: 10px;
-		margin-left: 10px;
-		width: 300px;
-		height: 220px;
-		background-color: #7f0a0a;
-		border-radius: 10px;
-		left: 0;
-		bottom: 0;
-	}
-	.alert_form
-	{
-		padding: 10px;
-	}
-	#after_menu
-	{
-		width: 100%;
-		height: 120px;
-		text-align: center;
-		color: white;
-		background: #68001f; 
-		background: -moz-linear-gradient(left, #68001f 0%, #590019 53%, #a00063 100%); 
-		background: -webkit-linear-gradient(left, #68001f 0%,#590019 53%,#a00063 100%); 
-		background: linear-gradient(to right, #68001f 0%,#590019 53%,#a00063 100%); 
-		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#68001f', endColorstr='#a00063',GradientType=1 ); 
-	}
-	.all_new_cars_title
-	{
-		font-size: 30px;
-	}
-	.alert_form p
-	{
-		font-style: italic;
-		font-size: 11px;
-		color: white;
-		font-weight: bold;
-		text-align: center;
-	}
-	.alert_form input
-	{
-		border-radius:0px;
-	}
-	#bell_icon
-	{
-		-webkit-animation-iteration-count:infinite;
-		-webkit-animation-duration:2s;
-
-	}
-	.btn_alert_submit
-	{
-		background-color: #640707;
-		border:solid 1px white;
-		color: white;
-		border-radius: 0px;
-		transition: 0.5s;
-		width: 100%;
-		transition: 1s;
-	}
-	.btn_alert_submit:hover
-	{
-	   background-color: #350404;
-	   color: white;
-	}
-	.btn_close
-	{
-		color: white;
-		font-size: 17px;
-	}
-	#myError
-	{
-		padding: 5px;
-		background-color: #7f0a0a;
-		border-radius: 10px;
-		text-align: center;
-		color: white;
-		width: 300px;
-		z-index: 9999;
-	}
-	.my_model_name
-	{
-		text-decoration: none;
-	}
-	.my_model_name:hover
-	{
-		text-decoration: none;
-	}
-	.separator
-	{
-		height: 10px;
-	}
-	.mini_search
-	{
-		padding:20px;
-		background-color: #e8e8e8;
-	}
-	.min_search_data
-	{
-		margin: auto 2px;
-	}
-	#submit_mini_search
-	{
-		background-color: #6f0747;
-		color: white;
-		border-radius: 0px;
-		border:solid 1px #fff;
-		font-size: 16px;
-		padding: 5px 15px;
-		transition:1s;
-		padding: 8px 10px;
-		box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 4px 0 rgba(0, 0, 0, 0.19);
-	}
-	#submit_mini_search:hover
-	{
-		background-color: #4a071f;
-		color: white;
-		border:solid 1px #fff;
-	}
-	.form_error
-	{
-		z-index: 99999;
-	}
-	#mini_search_form select
-	{
-		margin-bottom: 3px;
-		box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.19);
-		border:solid 1px #909090;
-	}
-	.car_min_info
-	{
-		margin-top: 5px;
-	}
-	
+    
 	
 </style>
 </head>
-<body>
+<body >
 	<div class="container-fluid" id="after_menu">
 		<br>
 		<span style="" class="all_new_cars_title">Over <?= $carCount; ?> Cars on Sale</span><br>
@@ -328,9 +56,11 @@
 			<form method="POST" id="mini_search_form" >
 				 <div class="form-group">
 				 	 <div class="row"> 
-				 	 	<div class="col-md-3">
+				 	 	<div class="col-md-9">
+				 	 		<div class="row">
+				 	 			<div class="col-md-4">
 				 	 	<div class="borderMethod">
-	                    <select class="form-control" name="make_name" id="make_name" required="required">
+	                    <select class="form-control" name="make_name" id="make_name" >
 	                       <option value="">Select Make (e.g : Ford)</option>           
 	                         <?php
 	                          $getMakes = $db->query('SELECT * FROM make ORDER BY make_name ASC ');
@@ -345,17 +75,17 @@
 	                   <span class="form_error" id="make_name_error"></span>
 	               </div>
                      </div>
-                     <div class="col-md-3">
+                     <div class="col-md-4">
                      	<div class="borderMethod">
-                      <select class="form-control" name="model_name" id="model_name" required="required"> 
+                      <select class="form-control" name="model_name" id="model_name" > 
                         <option value="">Select Vehicle Model</option>       
                      </select>
                      <span class="form_error" id="model_name_error"></span>
                      </div>
                      </div>
-                     <div class="col-md-3">
+                     <div class="col-md-4">
                      	<div class="borderMethod">
-                     	<select class="form-control" id="year" name="year" required="required">
+                     	<select class="form-control" id="year" name="year" >
                          <option value="">Vehicle Production Year</option>
                          <option value="2008">2008</option>
                          <option value="2009">2009</option>
@@ -372,7 +102,10 @@
                          <option value="2020">2020</option>
                       </select>
                       <span class="form_error" id="year_error"></span>
-                  </div>
+                        </div>
+				 	 		</div>
+				 	 	</div>
+				 	 	<!--<div class="error_empty animated shake"> All above fields are required</div>-->
                      </div>
                      <div class="col-md-3">
                      	<button class="btn btn-default btn-block" type="submit" name="submit_mini_search" id="submit_mini_search" ><i class="icon ion-ios-search"></i> SEARCH</button>
@@ -380,6 +113,7 @@
                </div>
             </div> 
 			</form>
+			
 		</div>
 	  </div>
 	</div>
@@ -469,43 +203,21 @@
  </div>
 </div>
  
-	 <!--<div class="alert_box alert alert-dismissible" >
-	 	<button type="button" class="close btn_close" data-dismiss="alert">&times;</button>
-	 	<div class="alert_form">
-	 	<h3 class="animated headShake" id="bell_icon" style="color: white;" align="center"><i class="icon ion-ios-bell " ></i> &nbsp; Get Alerts</h3>
-	 	<p>Get instant notification of new vehicles listed on mccars</p>
-	   	  <form method="POST" >
-	   	  	<div class="form-group">
-	   	  	 <input type="text" name="alert_email" id="alert_email" placeholder="Alert Email" class="form-control">
-	   	  	</div>
-	   	  	<div class="form-group">
-	   	  		<button type="submit" id="submit_alert" name="submit_alert" class="btn btn-default btn_alert_submit">Submit</button>
-	   	  	</div>
-
-	   	  </form>
-	     </div>
-
-	 </div>
-	 <div class="container">
-		<a class="thumbnail"><img src="img/sownPick.jpg"></a>
-	</div>-->
+	
 </body>
 <?php include('alertIcon.php') ?>
 <?php include('includes/footer.php') ?>
 </html>
 <script type="text/javascript">
-	$(document).ready(function(){
+	/*$(document).ready(function(){
         $("#get_alert").click(function(){
            $(".alert_box").fadeIn(1000);
         });
 	});
 </script>
 <script type="text/javascript">
-	
-</script>
-<script type="text/javascript">
 	$(function(){
-
+        
 		$("#make_name_error").hide();
 		$("#model_name_error").hide();
 		$("#year_error").hide();
@@ -534,7 +246,7 @@
 				//$("#make_name_error").html("Select Make in the list");
 				//$("#make_name_error").show();
 				//$("#make_name_error").css("color","#a21d3c");
-				$("#make_name").css("border","1px solid #a21d3c");
+				$("#error_empty").css("display","block");
 				error_mkname = true;
 			}
 		}
